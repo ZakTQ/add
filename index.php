@@ -44,7 +44,7 @@ require_once "core/header.php";
                             <?php
                             } else {
                             ?>
-                                <img src="<?php echo $row['avatar'] ?>" class="card-img-top" alt="...">
+                                <img src="<?php echo "uploads/" . $row['avatar'] ?>" class="card-img-top" alt="...">
                             <?php
                             }
                             ?>

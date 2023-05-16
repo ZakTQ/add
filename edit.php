@@ -19,13 +19,15 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 <form class="form-reg" method="POST" action="core/crud/update.php" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?= $result['id'] ?>">
     <?php
+    $imgAvatar = "uploads/" . $result['avatar'];
+
     if (!$result['avatar']) {
     ?>
-    <img src="uploads/001.jpg" class="card-img-top" alt="...">
+        <img src="uploads/001.jpg" class="card-img-top" alt="...">
     <?php
     } else {
     ?>
-    <img src="<?php echo $result['avatar'] ?>" class="card-img-top" alt="...">
+        <img src="<?php echo $imgAvatar ?>" class="card-img-top" alt="...">
     <?php
     }
     ?>
@@ -41,13 +43,11 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Почтовый адрес</label>
-        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-            value="<?= $result['email'] ?>">
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $result['email'] ?>">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Пароль</label>
-        <input type="password" name="password" class="form-control" value="<?= $result['password'] ?>"
-            id="exampleInputPassword1">
+        <input type="password" name="password" class="form-control" value="<?= $result['password'] ?>" id="exampleInputPassword1">
     </div>
 
     <button type="submit" class="btn btn-primary">Сохранить</button>
