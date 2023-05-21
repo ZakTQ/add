@@ -1,0 +1,55 @@
+ - index.php принимает controller и action
+    при пустой адресной строке открывает controller_main
+
+- router берет из адресной строки имя контроллера и action
+
+- контроллер наследует контроллер из CORE
+class Controller
+{
+
+    public $model;
+    public $view;
+
+    function __construct()
+    {
+        $this->view = new View();
+    }
+
+    function action_index()
+    {
+    }
+}
+-контролер содержит функцию(функцию состава view и model)
+
+class Controller_Main extends Controller
+{
+    function action_index()
+    {
+        //тут я выбрал страницу MAIN и TEMPLATE с HEADER и FOOTER
+        $this->view->generate('main_view.php', 'template_view.php');
+    }
+}
+
+- создаем VIEW в функции __construct в CONTROLLER 
+    class View
+{
+	function generate($content_view, $template_view, $data = null)
+    CONTENT_VIEW БЕРЕМ ИЗ class Controller_Main ( $this->view = new View(); )
+	{
+
+		include 'app/views/' . $template_view;
+	}
+}
+
+в конце выполняем акшен в роутер
+
+        $controller = new $controller_name;
+        $action = $action_name;
+
+если методы есть то
+
+        if (method_exists($controller, $action)) {
+            $controller->$action(); выполняем ACTION
+        } else {
+            self::ErrorPage404();
+        }

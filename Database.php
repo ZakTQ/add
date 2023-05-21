@@ -2,10 +2,10 @@
 
 class Database
 {
-	private $host,
-		$db_name,
-		$user_name,
-		$user_pass;
+	// private $host,
+	// 	$db_name,
+	// 	$user_name,
+	// 	$user_pass;
 
 	static function connect()
 	{
